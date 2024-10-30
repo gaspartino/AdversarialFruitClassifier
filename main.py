@@ -3,6 +3,7 @@ import torch.nn as nn
 import numpy as np
 import torch.optim as optim
 import torchattacks
+from torch.optim import lr_scheduler
 from torchvision import models, transforms
 from torch.utils.data import Dataset, DataLoader, random_split
 from PIL import Image
@@ -118,7 +119,6 @@ model.fc = nn.Linear(num_ftrs, len(labels))
 
 model = model.to(device)
 
-or e scheduler
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
 exp_lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
